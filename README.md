@@ -6,6 +6,7 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
+2.7.3
 
 * System dependencies
 
@@ -22,3 +23,27 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+## Database 
+
+ cards 
+  - card_id : int  
+  - color : int 
+  - shape : int 
+  - filling : int 
+  - number : int 
+  - bit_id : string
+  - card_name :string
+
+ game 
+  - game_id : :uuid
+  - num_of_players: int 
+  - start_time: datetime 
+  - end_time: datetime 
+  <!-- - score :int 
+  - hints : int  -->
+  - deck: int array:true 
+  - deck_offset : int  ( array_id )
+  - current_cards_visible: int array:true
+  

@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_28_115925) do
+ActiveRecord::Schema.define(version: 2021_06_28_143558) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "cards", force: :cascade do |t|
@@ -23,6 +24,18 @@ ActiveRecord::Schema.define(version: 2021_06_28_115925) do
     t.integer "number"
     t.string "bit_id"
     t.string "card_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.uuid "game_id"
+    t.integer "num_of_players"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer "deck", array: true
+    t.integer "deck_offset"
+    t.integer "current_cards"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

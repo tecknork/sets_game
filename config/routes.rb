@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :cards, only :[:index,:show]
+  resources :games
+  resources :cards
   # namespace :api , path:'/' , constraints: {subdomain :'api'} do 
   #   resources :cards #, constraints: { subdomain : 'api'}
   # end
