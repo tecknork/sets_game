@@ -1,0 +1,31 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    #user: "1000"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment: 
+      POSTGRES_PASSWORD: password
+    ports:
+        - "5432:5432"
+  web:
+    build: ../
+    #command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - ../:/app
+    environment:
+      - RAILS_ENV=development
+      - DB_HOST=db
+      - DB_USER=postgres
+      - DB_PASSWORD=password
+      - RAILS_MAX_THREADS
+     
+ #     REDIS_URL: "redis://redis:6379/12"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+
+volumes:
+  db-data:
