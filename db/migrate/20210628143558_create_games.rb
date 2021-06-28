@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateGames < ActiveRecord::Migration[6.1]
   def change
     create_table :games do |t|
@@ -5,7 +7,7 @@ class CreateGames < ActiveRecord::Migration[6.1]
       t.integer :num_of_players
       t.datetime :start_time
       t.datetime :end_time
-      t.integer :deck , array: true 
+      t.integer :deck, array: true
       t.integer :deck_offset
       t.integer :current_cards
 

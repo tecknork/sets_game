@@ -23,7 +23,7 @@ default: &default
   host: <%= ENV['DB_HOST'] %>
   username: <%= ENV['DB_USER'] %>
   password: <%= ENV['DB_PASSWORD'] %>
-
+  
 development:
   <<: *default
   database: sets_game_development
@@ -85,5 +85,5 @@ test:
 production:
   <<: *default
   database: sets_game_production
-  # username: sets_game
-  # password: <%= ENV['SETS_GAME_DATABASE_PASSWORD'] %>
+  username: sets_game
+  password: <%= ENV['SETS_GAME_DATABASE_PASSWORD'] %>

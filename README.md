@@ -46,4 +46,8 @@ Things you may want to cover:
   - deck: int array:true 
   - deck_offset : int  ( array_id )
   - current_cards_visible: int array:true
-  
+
+set 
+  - game_id : uuid 
+  - player_id: uuid 
+  - cards : int array:true 
