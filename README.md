@@ -62,3 +62,12 @@ set
   - convert game-set to grpc #priority-0 
   - multiplayer 
   - 
+
+
+  # create game - first time 
+  # draw_cards(game_id, count= 12/3)
+         current_card != 15 
+  # is_set() list- [3] 
+  # possible_sets() card-list[3]
+  # update_set(game_id,[])
+  # 

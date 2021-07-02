@@ -26,6 +26,17 @@ class GamesController < ApplicationController
     end
   end
 
+  # POST /games/:game_id/draw
+  def draw 
+    puts params[:game_id]
+    @game = GameManager::GameDrawer.call(params[:game_id],3)
+    if @game.save
+      render json: @game, status: :created, location: @game
+    else
+      render json: @game.errors, status: :unprocessable_entity
+    end
+  end 
+
   # PATCH/PUT /games/1
   def update
     if @game.update(game_params)
