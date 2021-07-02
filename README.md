@@ -51,3 +51,14 @@ set
   - game_id : uuid 
   - player_id: uuid 
   - cards : int array:true 
+
+
+
+# TODO's 
+
+  - set up basic game logic 
+  - set up basic authentication 
+  - set up basic vue js  
+  - convert game-set to grpc #priority-0 
+  - multiplayer 
+  - 

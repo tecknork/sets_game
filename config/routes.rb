@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  #devise_for :users
   resources :games
   resources :cards
+  resources :sessions, only: [:create,:destroy]
   # namespace :api , path:'/' , constraints: {subdomain :'api'} do
   #   resources :cards #, constraints: { subdomain : 'api'}
   # end
