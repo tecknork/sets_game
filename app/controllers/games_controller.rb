@@ -15,10 +15,10 @@ class GamesController < ApplicationController
     render json: @game
   end
 
-  # POST /games
+  # POST /games/:id
   def create
     #@game = Game.new(game_params)
-    @game = GameManager::GameCreator.call
+    @game = GameManager::GameCreator.call(params[:id])
     if @game.save
       render json: @game, status: :created, location: @game
     else
@@ -26,23 +26,22 @@ class GamesController < ApplicationController
     end
   end
 
-  # POST /games/:game_id/draw
+  # GET /games/:game_id/draw
   def draw 
     
-    @game = GameManager::GameDrawer.call(params[:game_id],3)
-    if @game.save
-      render json: @game, status: :created, location: @game
-    else
-      render json: @game.errors, status: :unprocessable_entity
-    end
+    draw_card(params,15)
   end 
 
   # POST /games/:game_id/set
   def set 
     puts params
-    @boolean = GameManager::GameSetChecker.call(params[:game_id], params[:card_list])
+    @is_set = GameManager::GameSetChecker.call(params[:game_id], params[:card_list])
     
-    render json: @boolean
+    @has_updated = GameManager::GameUpdateSet.call(params[:game_id], params[:card_list]) if @is_set
+    
+    draw_card(params,12) if @has_updated
+        
+   # render json: @is_set
   end 
 
   # GET /games/:game_id/set
@@ -74,6 +73,15 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
   end
 
+  def draw_card(params,max_cards)
+    @game = GameManager::GameDrawer.call(params[:game_id],3,max_cards)
+    if @game.save
+      render json: @game, status: :created, location: @game
+    else
+      render json: @game.errors, status: :unprocessable_entity
+    end
+  end 
+  
   # Only allow a list of trusted parameters through.
   def game_params
     params.require(:game).permit(:game_id, :num_of_players, :start_time, :end_time, :deck, :deck_offset,

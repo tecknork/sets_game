@@ -71,3 +71,12 @@ set
   # possible_sets() card-list[3]
   # update_set(game_id,[])
   # 
+
+
+# TODO's 
+  - game get method with game_id 
+  - update set in db and update game 
+  - validations
+  - param validations 
+  - unit testing 
+  - front end 
