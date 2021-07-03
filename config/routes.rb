@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :cards
   resources :sessions, only: [:create,:destroy]
   get '/games/:game_id/draw', to: 'games#draw'
+  post '/games/:game_id/set',  to: 'games#set'
+  get '/games/:game_id/set', to: 'games#set_all'
   # namespace :api , path:'/' , constraints: {subdomain :'api'} do
   #   resources :cards #, constraints: { subdomain : 'api'}
   # end

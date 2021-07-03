@@ -28,13 +28,29 @@ class GamesController < ApplicationController
 
   # POST /games/:game_id/draw
   def draw 
-    puts params[:game_id]
+    
     @game = GameManager::GameDrawer.call(params[:game_id],3)
     if @game.save
       render json: @game, status: :created, location: @game
     else
       render json: @game.errors, status: :unprocessable_entity
     end
+  end 
+
+  # POST /games/:game_id/set
+  def set 
+    puts params
+    @boolean = GameManager::GameSetChecker.call(params[:game_id], params[:card_list])
+    
+    render json: @boolean
+  end 
+
+  # GET /games/:game_id/set
+  def set_all
+    puts params
+    @card_list = GameManager::GameAllSetChecker.call(params[:game_id])
+    
+    render json: @card_list
   end 
 
   # PATCH/PUT /games/1
@@ -63,4 +79,9 @@ class GamesController < ApplicationController
     params.require(:game).permit(:game_id, :num_of_players, :start_time, :end_time, :deck, :deck_offset,
                                  :current_cards)
   end
+
+  def set_params
+    params.require(:card_list).permit
+  end 
+
 end
