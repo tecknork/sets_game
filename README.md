@@ -74,9 +74,11 @@ set
 
 
 # TODO's 
-  - game get method with game_id 
-  - update set in db and update game 
+  - game get method with game_id  # done 
+  - update set in db and update game  # done 
   - validations
   - param validations 
   - unit testing 
+  - devise 
+  - jbuilder
   - front end 
