@@ -15,6 +15,14 @@ class GamesController < ApplicationController
     render json: @game
   end
 
+   # GET /games/:game_id
+  def find_game_id
+    set_game_with_game_id
+    render json: @game
+  end
+
+
+
   # POST /games/:id
   def create
     #@game = Game.new(game_params)
@@ -71,6 +79,10 @@ class GamesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_game
     @game = Game.find(params[:id])
+  end
+
+  def set_game_with_game_id
+    @game = Game.find_by(game_id: params[:game_id])
   end
 
   def draw_card(params,max_cards)

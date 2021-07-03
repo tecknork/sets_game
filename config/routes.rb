@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post '/games/:game_id/set',  to: 'games#set'
   post '/games/:game_id',  to: 'games#create'
   get '/games/:game_id/set', to: 'games#set_all'
+  get '/games/:game_id/get', to: 'games#find_game_id'
   # namespace :api , path:'/' , constraints: {subdomain :'api'} do
   #   resources :cards #, constraints: { subdomain : 'api'}
   # end
